@@ -40,8 +40,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'labor',
+<<<<<<< HEAD
     'feed',
     'flock',
+=======
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
 ]
 
 MIDDLEWARE = [

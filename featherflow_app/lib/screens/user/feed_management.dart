@@ -3,10 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme.dart';
 import '../../core/routes.dart';
 import '../../widgets/common_widgets.dart';
+<<<<<<< HEAD
 import '../../services/feed_service.dart';
 import '../../services/flock_service.dart';
 
 
+=======
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
 
 class FeedManagementScreen extends StatefulWidget {
   const FeedManagementScreen({super.key});
@@ -18,6 +21,7 @@ class FeedManagementScreen extends StatefulWidget {
 class _FeedManagementScreenState extends State<FeedManagementScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+<<<<<<< HEAD
   final FeedService _feedService = FeedService();
   final FlockService _flockService = FlockService();
   bool _isLoading = true;
@@ -33,11 +37,84 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
   List<Map<String, dynamic>> _consumptionLogs = [];
   List<Map<String, dynamic>> _purchaseOrders = [];
 
+=======
+
+  final List<Map<String, dynamic>> _feedStock = [
+    {
+      'name': 'Broiler Starter',
+      'brand': 'ACI Feeds',
+      'stock': 450,
+      'unit': 'kg',
+      'reorder': 100,
+      'color': const Color(0xFF4CAF82),
+      'icon': Icons.grass_rounded,
+    },
+    {
+      'name': 'Broiler Grower',
+      'brand': 'CP Feeds',
+      'stock': 280,
+      'unit': 'kg',
+      'reorder': 150,
+      'color': const Color(0xFF29B6F6),
+      'icon': Icons.eco_rounded,
+    },
+    {
+      'name': 'Layer Pellet',
+      'brand': 'Nourish Feeds',
+      'stock': 80,
+      'unit': 'kg',
+      'reorder': 200,
+      'color': const Color(0xFFF4C552),
+      'icon': Icons.grain_rounded,
+    },
+    {
+      'name': 'Vitamin Premix',
+      'brand': 'Renata',
+      'stock': 12,
+      'unit': 'kg',
+      'reorder': 5,
+      'color': const Color(0xFFE53935),
+      'icon': Icons.science_rounded,
+    },
+  ];
+
+  final List<Map<String, dynamic>> _schedules = [
+    {
+      'time': '6:00 AM',
+      'type': 'Broiler Starter',
+      'amount': '50 kg',
+      'flock': 'Shed A (2000 birds)',
+      'done': true,
+    },
+    {
+      'time': '12:00 PM',
+      'type': 'Broiler Grower',
+      'amount': '60 kg',
+      'flock': 'Shed B (3000 birds)',
+      'done': false,
+    },
+    {
+      'time': '6:00 PM',
+      'type': 'Layer Pellet',
+      'amount': '40 kg',
+      'flock': 'Shed C (1500 birds)',
+      'done': false,
+    },
+  ];
+
+  final List<Map<String, dynamic>> _nutritionData = [
+    {'label': 'Protein', 'value': 21.5, 'unit': '%', 'target': 22.0, 'color': const Color(0xFF4CAF82)},
+    {'label': 'Energy', 'value': 3100, 'unit': 'kcal', 'target': 3200, 'color': const Color(0xFFF4C552)},
+    {'label': 'Calcium', 'value': 0.9, 'unit': '%', 'target': 1.0, 'color': const Color(0xFF29B6F6)},
+    {'label': 'Phosphorus', 'value': 0.45, 'unit': '%', 'target': 0.50, 'color': const Color(0xFFE53935)},
+  ];
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 6, vsync: this);
+<<<<<<< HEAD
     _fetchData();
   }
 
@@ -143,6 +220,10 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
   }
 
 
+=======
+  }
+
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
   @override
   void dispose() {
     _tabController.dispose();
@@ -180,6 +261,7 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
           labelStyle: GoogleFonts.plusJakartaSans(
               fontSize: 12, fontWeight: FontWeight.w600),
           tabs: const [
+<<<<<<< HEAD
             Tab(text: 'Types'),
             Tab(text: 'Schedules'),
             Tab(text: 'Logs'),
@@ -224,6 +306,30 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
             case 5: _showAddOrderSheet(); break;
           }
         },
+=======
+            Tab(text: 'Stock'),
+            Tab(text: 'Purchases'),
+            Tab(text: 'Consumption'),
+            Tab(text: 'Suppliers'),
+            Tab(text: 'Reports'),
+            Tab(text: 'Payments'),
+          ],
+        ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          _buildStockTab(),
+          _buildPurchasesTab(),
+          _buildConsumptionTab(),
+          _buildSuppliersTab(),
+          _buildReportsTab(),
+          _buildPaymentsTab(),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _showAddFeedSheet,
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
         backgroundColor: AppTheme.primary,
         icon: const Icon(Icons.add, color: Colors.white),
         label: Text(
@@ -235,6 +341,7 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
           ),
         ),
       ),
+<<<<<<< HEAD
 
     );
   }
@@ -350,11 +457,16 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
           ),
         ],
       ),
+=======
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
     );
   }
 
   Widget _buildScheduleTab() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
     // Daily consumption summary
     const totalConsumed = 185; // kg
     const totalBirds = 6500;
@@ -529,6 +641,7 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
     );
   }
 
+<<<<<<< HEAD
   Widget _buildTypesTab() {
     return ListView.builder(
       padding: const EdgeInsets.all(20),
@@ -573,12 +686,15 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
     );
   }
 
+=======
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
   Widget _buildNutritionTab() {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+<<<<<<< HEAD
           ..._nutritionPlans.map((plan) => Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -596,11 +712,80 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
               const SizedBox(height: 20),
             ],
           )),
+=======
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: AppTheme.accent.withOpacity(0.08),
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: AppTheme.accent.withOpacity(0.25)),
+            ),
+            child: Row(
+              children: [
+                const Icon(Icons.info_outline_rounded,
+                    color: AppTheme.accent, size: 20),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    'Nutrition values are based on current feed mix for Broiler (Day 15)',
+                    style: GoogleFonts.plusJakartaSans(
+                        fontSize: 12, color: AppTheme.textSecondary),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            'NUTRITIONAL ANALYSIS',
+            style: GoogleFonts.plusJakartaSans(
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
+              color: AppTheme.textSecondary,
+              letterSpacing: 0.8,
+            ),
+          ),
+          const SizedBox(height: 12),
+          ..._nutritionData.map((n) => _nutritionCard(n)),
+          const SizedBox(height: 20),
+          Text(
+            'FEED FORMULA',
+            style: GoogleFonts.plusJakartaSans(
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
+              color: AppTheme.textSecondary,
+              letterSpacing: 0.8,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: const Color(0xFFE8F0EC)),
+            ),
+            child: Column(
+              children: [
+                _formulaRow('Maize', '55%', AppTheme.gold),
+                _formulaRow('Soybean Meal', '30%', const Color(0xFF8D6E63)),
+                _formulaRow('Rice Bran', '8%', const Color(0xFFBCAAA4)),
+                _formulaRow('Vitamin Premix', '4%', AppTheme.accent),
+                _formulaRow('Mineral Mix', '2%', AppTheme.info),
+                _formulaRow('Salt', '1%', AppTheme.textMuted),
+                const Divider(height: 20),
+                _formulaRow('Total', '100%', AppTheme.primary),
+              ],
+            ),
+          ),
+          const SizedBox(height: 80),
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
         ],
       ),
     );
   }
 
+<<<<<<< HEAD
 
   Widget _buildPurchasesTab() {
     return ListView.builder(
@@ -685,6 +870,72 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
   }
 
 
+=======
+  Widget _buildPurchasesTab() {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('FEED PURCHASE RECORDS',
+              style: GoogleFonts.plusJakartaSans(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  color: AppTheme.textSecondary,
+                  letterSpacing: 0.8)),
+          const SizedBox(height: 12),
+          // Placeholder for purchase records
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: const Color(0xFFE8F0EC)),
+            ),
+            child: Center(
+              child: Text('Purchase records will be displayed here',
+                  style: GoogleFonts.plusJakartaSans(
+                      fontSize: 14, color: AppTheme.textSecondary)),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildConsumptionTab() {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('FEED CONSUMPTION LOGS',
+              style: GoogleFonts.plusJakartaSans(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  color: AppTheme.textSecondary,
+                  letterSpacing: 0.8)),
+          const SizedBox(height: 12),
+          // Placeholder for consumption logs
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: const Color(0xFFE8F0EC)),
+            ),
+            child: Center(
+              child: Text('Consumption logs and batch/flock usage will be displayed here',
+                  style: GoogleFonts.plusJakartaSans(
+                      fontSize: 14, color: AppTheme.textSecondary)),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
   Widget _buildSuppliersTab() {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
@@ -848,6 +1099,7 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
           ),
           if (!done)
             GestureDetector(
+<<<<<<< HEAD
               onTap: () async {
                 try {
                   await _feedService.updateScheduleStatus(s['id'], true);
@@ -858,6 +1110,9 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
                   );
                 }
               },
+=======
+              onTap: () => setState(() => _schedules[i]['done'] = true),
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -883,7 +1138,10 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
     );
   }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
   Widget _stockCard(Map<String, dynamic> f) {
     final stock = f['stock'] as int;
     final reorder = f['reorder'] as int;
@@ -1030,6 +1288,7 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
       ),
     );
   }
+<<<<<<< HEAD
   void _showAddTypeSheet() {
     final formKey = GlobalKey<FormState>();
     final nameController = TextEditingController();
@@ -1077,10 +1336,87 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
               const SizedBox(height: 20),
             ],
           ),
+=======
+
+  void _showAddFeedSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) => Container(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(ctx).viewInsets.bottom + 24,
+          top: 24,
+          left: 24,
+          right: 24,
+        ),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                width: 40,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFE0E0E0),
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Text('Add Feed Record',
+                style: GoogleFonts.playfairDisplay(
+                    fontSize: 20, fontWeight: FontWeight.w700)),
+            const SizedBox(height: 20),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Feed Type',
+                hintText: 'e.g. Broiler Starter',
+                prefixIcon: const Icon(Icons.grass_rounded, size: 20),
+                labelStyle: GoogleFonts.plusJakartaSans(fontSize: 13),
+              ),
+            ),
+            const SizedBox(height: 14),
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: 'Quantity (kg)',
+                hintText: '0',
+                prefixIcon: const Icon(Icons.scale_rounded, size: 20),
+                labelStyle: GoogleFonts.plusJakartaSans(fontSize: 13),
+              ),
+            ),
+            const SizedBox(height: 14),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Flock / Shed',
+                hintText: 'e.g. Shed A',
+                prefixIcon: const Icon(Icons.home_work_outlined, size: 20),
+                labelStyle: GoogleFonts.plusJakartaSans(fontSize: 13),
+              ),
+            ),
+            const SizedBox(height: 22),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: Text('Save Record',
+                    style: GoogleFonts.plusJakartaSans(
+                        fontSize: 14, fontWeight: FontWeight.w600)),
+              ),
+            ),
+          ],
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
         ),
       ),
     );
   }
+<<<<<<< HEAD
 
   void _showAddScheduleSheet() {
     final formKey = GlobalKey<FormState>();
@@ -1365,3 +1701,6 @@ class _FeedManagementScreenState extends State<FeedManagementScreen>
     );
   }
 }
+=======
+}
+>>>>>>> 625411fbcf886ad374d6b8004230b94ab7b36bf3
